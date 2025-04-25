@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    overflow: hidden;
+    background: #70c5ce;
+    font-family: Arial, sans-serif;
+  }
+  
+  canvas {
+    display: block;
+    margin: auto;
+    background: #70c5ce;
+    border: 2px solid #000;
+  }
+  
+  .ui {
+    text-align: center;
+    margin: 10px;
+  }
+  
+  button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #levelDisplay, #scoreDisplay {
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
