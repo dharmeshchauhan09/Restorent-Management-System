@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu | Flavor Feast</title>
+  <style>
+    :root {
+      --primary-color: #ff914d;
+      --primary-dark: #e67e22;
+      --text-color: #333;
+      --background-color: #f4f4f4;
+      --white: #fff;
+      --light-gray: #f1f1f1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background-color: var(--primary-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      color: var(--white);
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .menu-hero {
+      background: url('images/menu-hero.jpg') center/cover no-repeat;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      background-color: #333;
+    }
+
+    .menu-hero-content {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      border-radius: 8px;
+    }
+
+    .menu-hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .menu-hero-content p {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .menu-hero-content button {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .menu-hero-content button:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .menu-section h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--primary-dark);
+    }
+
+    .menu-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .menu-item {
+      background-color: var(--white);
+      padding: 20px;
+      border-radius: 10px;
+      width: 280px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .menu-item h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+    }
+
+    .menu-item p {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .menu-item span {
+      font-size: 1.2rem;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .menu-item button {
+      background-color: var(--primary-color);
+      color: var(--white);
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .menu-item button:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .footer {
+      background-color: var(--light-gray);
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .menu-items {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .menu-item {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">🍽️ <strong>Flavor Feast</strong></div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="menu-hero">
+    <div class="menu-hero-content">
+      <h1>Our Menu</h1>
+      <p>Explore our delicious selections made with love!</p>
+    </div>
+  </header>
+
+  <!-- Menu Section -->
+  <section class="container menu-section">
+    <h2>Featured Dishes</h2>
+    <div class="menu-items">
+      <!-- Repeat this block for 20 dishes -->
+      <div class="menu-item">
+        <h3>🍕 Margherita Pizza</h3>
+        <p>Classic Italian pizza with fresh mozzarella and basil.</p>
+        <span>200</span>
+        <button onclick="location.href='order.html'">Order</button>
+      </div>
+      <div class="menu-item">
+        <h3>🍔 Beef Burger</h3>
+        <p>Juicy grilled patty with cheese, lettuce, and tomato.</p>
+        <span>100</span>
+        <button onclick="location.href='order.html'">Order</button>
+      </div>
+      <div class="menu-item">
+        <h3>🥗 Caesar Salad</h3>
+        <p>Crisp romaine, croutons, parmesan, and Caesar dressing.</p>
+        <span>50</span>
+        <button onclick="location.href='order.html'">Order</button>
+      </div>
+      <div class="menu-item">
+        <h3>🍝 Spaghetti Bolognese</h3>
+        <p>Rich meat sauce over al dente spaghetti noodles.</p>
+        <span>80</span>
+        <button onclick="location.href='order.html'">Order</button>
+      </div>
+      <div class="menu-item">
+        <h3>🍣 Sushi Platter</h3>
+        <p>Fresh assorted sushi rolls with soy and wasabi.</p>
+        <span>150</span>
+        <button onclick="location.href='order.html'">Order</button>
+      </div>
+      <div class="menu-item">
+        <h3>🥪 Club Sandwich</h3>
+        <p>Triple-layered sandwich packed with meats and veggies.</p>
+        <span>30</span>
+        <button onclick="location.href='order.html'">Order</button>
+      </div>
+      <div class="menu-item">
+        <h3>🌮 Tacos</h3>
+        <p>3 crispy tacos filled with beef, salsa, and cheese.</p>
+        <span>70</span>
+        <button onclick="location.href='order.html'">Order</button>
+      </div>
+      <div class="menu-item">
+        <h3>🍛 Butter Chicken</h3>
+        <p>Rich Indian curry served with basmati rice.</p>
+        <span>250</span>
+        <button onclick="location.href='order.html'">Order</button>
+      </div>
+      <div class="menu-item">
+        <h3>🥘 Paella</h3>
+        <p>Spanish rice dish with seafood and saffron.</p>
+        <span>220</span>
+        <button onclick="location.href='order.html'">Order</button>
+      </div>
+      <div class="menu-item">
+        <h3>🍜 Ramen Bowl</h3>
+        <p>Hearty broth with noodles, egg, and toppings.</p>
+        <span>110</span>
+        <button onclick="location.href='order.html'">Order</button>
+      </div>
+
+      <!-- 10 more menu items -->
+      <div class="menu-item"><h3>🥩 Steak</h3><p>Grilled sirloin with garlic butter and veggies.</p><span>210</span><button onclick="location.href='order.html'">Order</button></div>
+      <div class="menu-item"><h3>🐟 Grilled Salmon</h3><p>Seasoned salmon filet served with lemon sauce.</p><span>40</span><button onclick="location.href='order.html'">Order</button></div>
+      <div class="menu-item"><h3>🍤 Shrimp Skewers</h3><p>Spiced shrimp grilled on skewers, served with dip.</p><span>90</span><button onclick="location.href='order.html'">Order</button></div>
+      <div class="menu-item"><h3>🍩 Donuts</h3><p>Assorted glazed and chocolate-filled donuts.</p><span>20</span><button onclick="location.href='order.html'">Order</button></div>
+      <div class="menu-item"><h3>🍦 Ice Cream Sundae</h3><p>Three scoops with toppings and sauces.</p><span>60</span><button onclick="location.href='order.html'">Order</button></div>
+      <div class="menu-item"><h3>☕ Cappuccino</h3><p>Hot espresso with steamed milk and foam.</p><span>55</span><button onclick="location.href='order.html'">Order</button></div>
+      <div class="menu-item"><h3>🥞 Pancakes</h3><p>Fluffy pancakes served with syrup and butter.</p><span>10</span><button onclick="location.href='order.html'">Order</button></div>
+      <div class="menu-item"><h3>🍗 Chicken Wings</h3><p>Spicy fried chicken wings with ranch dip.</p><span>15</span><button onclick="location.href='order.html'">Order</button></div>
+      <div class="menu-item"><h3>🍚 Fried Rice</h3><p>Chinese-style fried rice with vegetables and egg.</p><span>80</span><button onclick="location.href='order.html'">Order</button></div>
+      <div class="menu-item"><h3>🥤 Milkshake</h3><p>Rich and creamy milkshake in your favorite flavor.</p><span>35</span><button onclick="location.href='order.html'">Order</button></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Flavor Feast. All rights reserved.</p>
+  </footer>
+</body>
+</html>

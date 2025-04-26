@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>💰 Payment History | Restaurant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      padding: 40px 20px;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff914d;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .payment-list {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px 30px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .payment-item {
+      border-bottom: 1px solid #eee;
+      padding: 18px 0;
+    }
+
+    .payment-item:last-child {
+      border-bottom: none;
+    }
+
+    .payment-item h3 {
+      color: #333;
+      margin: 0 0 5px;
+    }
+
+    .payment-item p {
+      margin: 3px 0;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    .payment-item p span {
+      font-weight: 600;
+      color: #000;
+    }
+
+    @media (max-width: 600px) {
+      .payment-list {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💰 Payment History</h1>
+  <div class="payment-list" id="paymentList"></div>
+
+  <script>
+    const payments = JSON.parse(localStorage.getItem("orderHistory")) || [];
+    const container = document.getElementById("paymentList");
+
+    if (payments.length === 0) {
+      container.innerHTML = "<p style='text-align:center;'>No payments recorded yet.</p>";
+    } else {
+      payments.reverse().forEach(payment => {
+        container.innerHTML += `
+          <div class="payment-item">
+            <h3>🧾 ${payment.item}</h3>
+            <p><span>Amount:</span> ₹${payment.amount}</p>
+            <p><span>Method:</span> ${payment.method}</p>
+            <p><span>Details:</span> ${payment.detail || "N/A"}</p>
+            <p><span>Date:</span> ${payment.date}</p>
+            <p><span>Status:</span> ${payment.status}</p>
+          </div>
+        `;
+      });
+    }
+  </script>
+
+</body>
+</html>

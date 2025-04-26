@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: radial-gradient(circle, #000 20%, #1a1a2e);
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  #game {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    perspective: 1000px;
+    overflow: hidden;
+  }
+  
+  #player {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: cyan;
+    border-radius: 50%;
+    box-shadow: 0 0 20px cyan;
+    transition: left 0.1s ease;
+  }
+  
+  #orb, #obstacle {
+    position: absolute;
+    top: -50px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  
+  #orb {
+    background: lime;
+    box-shadow: 0 0 15px lime;
+  }
+  
+  #obstacle {
+    background: red;
+    box-shadow: 0 0 15px red;
+  }
+  
+  #score {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-size: 1.5rem;
+  }

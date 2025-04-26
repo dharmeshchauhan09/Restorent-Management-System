@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live Payment | Restaurant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    form {
+      width: 100%;
+      max-width: 420px;
+      background: #fff;
+      padding: 35px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transition: 0.3s ease;
+      text-align: center;
+    }
+
+    .form-img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #e67e22;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    label {
+      font-weight: 600;
+      margin-top: 20px;
+      display: block;
+      text-align: left;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 12px 15px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      transition: 0.2s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: #e67e22;
+      outline: none;
+      box-shadow: 0 0 5px rgba(230, 126, 34, 0.4);
+    }
+
+    #extraField {
+      display: none;
+    }
+
+    button {
+      background: #e67e22;
+      color: white;
+      font-weight: bold;
+      margin-top: 25px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #cf711f;
+    }
+
+    .icon {
+      margin-right: 8px;
+    }
+
+    @media (max-width: 500px) {
+      form {
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <form id="paymentForm">
+    <img src="chef3.jpg" alt="Chef Image" class="form-img" />
+    <h1>Make a Payment</h1>
+
+    <label for="item">🍽️ Food Item</label>
+    <input type="text" id="item" placeholder="e.g., Veg Burger" required />
+
+    <label for="amount">💰 Amount (₹)</label>
+    <input type="number" id="amount" placeholder="e.g., 199" required />
+
+    <label for="method">💼 Payment Method</label>
+    <select id="method" required>
+      <option value="">-- Choose Payment Type --</option>
+      <option value="Card">💳 Card</option>
+      <option value="UPI">📱 UPI</option>
+      <option value="Cash">💵 Cash</option>
+    </select>
+
+    <div id="extraField">
+      <label id="extraLabel" for="extraInput"></label>
+      <input type="text" id="extraInput" placeholder="" />
+    </div>
+
+    <button type="submit">✅ Confirm Payment</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("paymentForm");
+    const methodSelect = document.getElementById("method");
+    const extraField = document.getElementById("extraField");
+    const extraInput = document.getElementById("extraInput");
+    const extraLabel = document.getElementById("extraLabel");
+
+    methodSelect.addEventListener("change", () => {
+      const method = methodSelect.value;
+      if (method === "Card") {
+        extraLabel.innerText = "🔢 Card Number";
+        extraInput.placeholder = "1234 5678 9012 3456";
+        extraInput.required = true;
+        extraField.style.display = "block";
+      } else if (method === "UPI") {
+        extraLabel.innerText = "📱 UPI ID or Link";
+        extraInput.placeholder = "name@upi or https://upi.link";
+        extraInput.required = true;
+        extraField.style.display = "block";
+      } else {
+        extraField.style.display = "none";
+        extraInput.required = false;
+      }
+    });
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const item = document.getElementById("item").value;
+      const amount = document.getElementById("amount").value;
+      const method = methodSelect.value;
+      const extra = extraInput.value || "N/A";
+      const date = new Date().toLocaleString();
+      const status = "Paid";
+
+      const paymentInfo = {
+        item,
+        amount,
+        method,
+        detail: method === "Cash" ? "Cash Payment" : extra,
+        date,
+        status
+      };
+
+      // Save to localStorage
+      const history = JSON.parse(localStorage.getItem("orderHistory")) || [];
+      history.push(paymentInfo);
+      localStorage.setItem("orderHistory", JSON.stringify(history));
+
+      window.location.href = "thankyou.html";
+    });
+  </script>
+
+</body>
+</html>

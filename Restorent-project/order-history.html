@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📦 Order History | Restaurant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      padding: 40px 20px;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #e67e22;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .order-list {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px 30px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .order-item {
+      border-bottom: 1px solid #eee;
+      padding: 18px 0;
+    }
+
+    .order-item:last-child {
+      border-bottom: none;
+    }
+
+    .order-item h3 {
+      color: #333;
+      margin: 0 0 5px;
+    }
+
+    .order-item p {
+      margin: 3px 0;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    .order-item p span {
+      font-weight: 600;
+      color: #000;
+    }
+
+    @media (max-width: 600px) {
+      .order-list {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📦 Your Order History</h1>
+  <div class="order-list" id="orderList"></div>
+
+  <script>
+    const orders = JSON.parse(localStorage.getItem("orderHistory")) || [];
+    const container = document.getElementById("orderList");
+
+    if (orders.length === 0) {
+      container.innerHTML = "<p style='text-align:center;'>No orders found yet.</p>";
+    } else {
+      orders.reverse().forEach(order => {
+        container.innerHTML += `
+          <div class="order-item">
+            <h3>🧾 ${order.item}</h3>
+            <p><span>Amount:</span> ₹${order.amount}</p>
+            <p><span>Method:</span> ${order.method}</p>
+            <p><span>Details:</span> ${order.detail || "N/A"}</p>
+            <p><span>Date:</span> ${order.date}</p>
+            <p><span>Status:</span> ${order.status}</p>
+          </div>
+        `;
+      });
+    }
+  </script>
+
+</body>
+</html>

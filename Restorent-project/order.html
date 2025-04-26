@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Now | Restaurant</title>
+  <style>
+    /* CSS Variables for Theme */
+    :root {
+      --primary-color: #ff914d;
+      --primary-dark: #e67e22;
+      --text-color: #333;
+      --background-color: #f4f4f4;
+      --white: #fff;
+      --light-gray: #f1f1f1;
+    }
+
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: var(--primary-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      color: var(--white);
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hero Section */
+    .order-hero {
+      background: url('images/order-hero.jpg') center/cover no-repeat;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      background-color: #333;
+    }
+
+    .order-hero-content {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      border-radius: 8px;
+    }
+
+    .order-hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .order-hero-content p {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Order Section */
+    .container {
+      padding: 30px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .order-section h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--primary-dark);
+    }
+
+    .order-options {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .order-box {
+      background-color: var(--white);
+      padding: 30px;
+      border-radius: 10px;
+      flex: 1;
+      min-width: 250px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .order-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .order-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--primary-dark);
+    }
+
+    .order-box p {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .order-box button {
+      background-color: var(--primary-color);
+      color: var(--white);
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s;
+      margin-top: 20px;
+    }
+
+    .order-box button:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .order-box button:focus {
+      outline: 2px solid var(--primary-dark);
+    }
+
+    .order-box button:active {
+      transform: scale(0.98);
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--light-gray);
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      .nav-links a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .order-hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .order-hero-content p {
+        font-size: 1.2rem;
+      }
+
+      .order-options {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .order-box {
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">🍽️ <strong>Restaurant</strong></div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="order-hero">
+    <div class="order-hero-content">
+      <h1>Place Your Order</h1>
+      <p>Craving your favorite dish? Order now or choose from our menu!</p>
+    </div>
+  </header>
+
+  <!-- Order Section -->
+  <section class="container order-section">
+    <h2>How to Order</h2>
+    <div class="order-options">
+      <div class="order-box">
+        <h3>🛒 Order Online</h3>
+        <p>Browse our menu, select your items, and place your order online for quick delivery or pickup.</p>
+        <button onclick="window.location.href='payment.html'">Order Online</button>
+      </div>
+      <div class="order-box">
+        <h3>🚗 Delivery & Takeaway</h3>
+        <p>Get your meal delivered to you or pick it up yourself with our convenient takeaway options.</p>
+        <button onclick="window.location.href='payment.html'">Order Online</button>
+      </div>
+      <div class="order-box">
+        <h3>📞 Call Us</h3>
+        <p>Prefer to place an order over the phone? Call us and we’ll take your order with care!</p>
+        <button onclick="window.location.href='contact.html'">Call</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Restaurant. All rights reserved.</p>
+  </footer>
+</body>
+</html>

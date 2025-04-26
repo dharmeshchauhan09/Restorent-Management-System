@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Flavor Restaurant</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: #ff914d;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar .logo {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+  
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Hero Section */
+  .about-hero {
+    background: url('images/about-hero.jpg') center/cover no-repeat;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background-color: #333;
+  }
+  
+  .about-hero-content {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  
+  .about-hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .about-hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* About Us Section */
+  .container {
+    padding: 30px;
+    max-width: 1100px;
+    margin: auto;
+  }
+  
+  .about-us-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #e67e22;
+  }
+  
+  .about-us-section h3 {
+    font-size: 1.8rem;
+    margin-top: 20px;
+    color: #e67e22;
+  }
+  
+  .about-us-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  .about-us-section ul li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #666;
+  }
+  
+  .about-us-section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .about-hero-content h1 {
+      font-size: 2rem;
+    }
+  
+    .about-hero-content p {
+      font-size: 1.2rem;
+    }
+  
+    .about-us-section h2 {
+      font-size: 2rem;
+    }
+  
+    .about-us-section h3 {
+      font-size: 1.5rem;
+    }
+  }
+  
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">🍽️ <strong>Flavor</strong></div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section for About Us -->
+  <header class="about-hero">
+    <div class="about-hero-content">
+      <h1>Welcome to Flavor</h1>
+      <p>Where every dish tells a story of passion and taste!</p>
+    </div>
+  </header>
+
+  <!-- About Us Content -->
+  <section class="container about-us-section">
+    <h2>Our Story</h2>
+    <p>At **Flavor**, we believe that great food has the power to bring people together. Our journey began in 2010 when our founder, Dharmesh Chauhan, decided to share the love for fresh, high-quality ingredients, and traditional cooking methods with the world. What started as a small local eatery has now blossomed into a beloved restaurant in the heart of Vadodara.</p>
+    
+    <h3>Our Mission</h3>
+    <p>Our mission is simple: to provide an unforgettable dining experience through delicious, wholesome meals made from the finest ingredients. From farm-to-table, every dish is crafted with care and passion.</p>
+
+    <h3>Our Vision</h3>
+    <p>We aim to be a place where friends, families, and loved ones can come together to enjoy not only great food but a sense of community and belonging. Whether you're here for a special occasion or just a casual meal, we want **Flavor** to feel like home.</p>
+
+    <h3>Our Values</h3>
+    <ul>
+      <li><strong>Freshness:</strong> We use only the freshest ingredients, sourced from local farmers and suppliers.</li>
+      <li><strong>Community:</strong> We believe in building strong connections with our guests and the local community.</li>
+      <li><strong>Innovation:</strong> We're always exploring new flavors and cooking techniques to keep our menu exciting and fresh.</li>
+    </ul>
+    
+    <h3>Our Team</h3>
+    <p>Our team is the heart of **Flavor**. From our chefs who pour their creativity and expertise into every dish, to our friendly staff who make your experience memorable, everyone at **Flavor** is committed to delivering excellence.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Flavor Restaurant. All rights reserved.</p>
+  </footer>
+</body>
+</html>

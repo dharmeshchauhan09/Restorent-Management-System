@@ -4,15 +4,13 @@ canvas.width = 320;
 canvas.height = 480;
 
 const startBtn = document.getElementById('startBtn');
-const nextLevelBtn = document.getElementById('nextLevelBtn');
-const levelDisplay = document.getElementById('levelDisplay');
 const scoreDisplay = document.getElementById('scoreDisplay');
 
-let bird, pipes, frame, score, level, pipeGap;
+let bird, pipes, frame, score;
 let gameStarted = false;
 let isGameOver = false;
-let movingUp = false;  // Flag for smooth upward movement
-let movingDown = false;  // Flag for smooth downward movement
+let movingUp = false;
+let movingDown = false;
 
 function initGame() {
   bird = {
@@ -21,47 +19,59 @@ function initGame() {
     width: 30,
     height: 30,
     velocity: 0,
-    speed: 0.8,  // Rate of speed change
-    maxSpeed: 8, // Max downward speed
-    minSpeed: -8 // Max upward speed
+    speed: 0.8,
+    maxSpeed: 8,
+    minSpeed: -8
   };
   pipes = [];
   frame = 0;
   score = 0;
   isGameOver = false;
-  pipeGap = 100 - (level - 1) * 5;
-  if (pipeGap < 50) pipeGap = 50;
   scoreDisplay.textContent = `Score: 0`;
 }
 
 function drawBird() {
-  ctx.fillStyle = "yellow";
-  ctx.fillRect(bird.x, bird.y, bird.width, bird.height);
+  // 3D look for bird
+  const gradient = ctx.createRadialGradient(
+    bird.x + bird.width / 2, bird.y + bird.height / 2, 5,
+    bird.x + bird.width / 2, bird.y + bird.height / 2, 20
+  );
+  gradient.addColorStop(0, "gold");
+  gradient.addColorStop(1, "orange");
+
+  ctx.fillStyle = gradient;
+  ctx.beginPath();
+  ctx.ellipse(bird.x + bird.width / 2, bird.y + bird.height / 2, 15, 15, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "#555";
+  ctx.lineWidth = 2;
+  ctx.stroke();
 }
 
 function drawPipe(pipe) {
   ctx.fillStyle = "green";
   ctx.fillRect(pipe.x, 0, pipe.width, pipe.top);
   ctx.fillRect(pipe.x, pipe.bottom, pipe.width, canvas.height - pipe.bottom);
+
+  // Add a light 3D shine effect
+  ctx.fillStyle = "lightgreen";
+  ctx.fillRect(pipe.x + pipe.width - 5, 0, 5, pipe.top);
+  ctx.fillRect(pipe.x + pipe.width - 5, pipe.bottom, 5, canvas.height - pipe.bottom);
 }
 
 function update() {
   if (isGameOver || !gameStarted) return;
 
-  // Smooth vertical movement with a faster response when keys are held down
   if (movingUp && bird.velocity > bird.minSpeed) {
-    bird.velocity -= bird.speed;  // Move up (decrease velocity)
+    bird.velocity -= bird.speed;
   } else if (movingDown && bird.velocity < bird.maxSpeed) {
-    bird.velocity += bird.speed;  // Move down (increase velocity)
-  } else if (!movingUp && !movingDown) {
-    // If no keys are pressed, let gravity pull the bird down at a constant rate
-    bird.velocity += 0.2;  // Gravity
+    bird.velocity += bird.speed;
+  } else {
+    bird.velocity += 0.2; // Gravity
   }
 
-  // Update bird's position based on velocity
   bird.y += bird.velocity;
 
-  // Boundaries
   if (bird.y + bird.height > canvas.height) bird.y = canvas.height - bird.height;
   if (bird.y < 0) bird.y = 0;
 
@@ -71,7 +81,7 @@ function update() {
       x: canvas.width,
       width: 40,
       top: top,
-      bottom: top + pipeGap
+      bottom: top + 100
     });
   }
 
@@ -83,20 +93,14 @@ function update() {
       scoreDisplay.textContent = `Score: ${score}`;
     }
 
-    // Collision detection with pipes
     if (
       bird.x < pipe.x + pipe.width &&
       bird.x + bird.width > pipe.x &&
       (bird.y < pipe.top || bird.y + bird.height > pipe.bottom)
     ) {
       isGameOver = true;
-      nextLevelBtn.disabled = true;  // Disable next level button if game over
     }
   });
-
-  if (score >= 10 && level < 10) {
-    nextLevelBtn.disabled = false;
-  }
 
   frame++;
 }
@@ -127,61 +131,40 @@ function gameLoop() {
 
 function jump() {
   if (!gameStarted) return;
-  movingUp = true;  // Start moving up
+  movingUp = true;
 }
 
 function stopJump() {
-  movingUp = false;  // Stop moving up when key is released
+  movingUp = false;
 }
 
 function moveDown() {
   if (!gameStarted) return;
-  movingDown = true;  // Start moving down
+  movingDown = true;
 }
 
 function stopMoveDown() {
-  movingDown = false;  // Stop moving down when key is released
+  movingDown = false;
 }
 
 function startGame() {
-  level = 1;
-  levelDisplay.textContent = `Level: ${level}`;
-  nextLevelBtn.disabled = true;
   gameStarted = true;
   isGameOver = false;
   initGame();
   gameLoop();
 }
 
-function nextLevel() {
-  if (level < 10) {
-    level++;
-    levelDisplay.textContent = `Level: ${level}`;
-    nextLevelBtn.disabled = true;
-    initGame();
-  }
-}
-
 startBtn.addEventListener("click", startGame);
-nextLevelBtn.addEventListener("click", nextLevel);
 
-// Mouse events for jumping
 window.addEventListener("mousedown", jump);
 window.addEventListener("touchstart", jump);
 
-// Keyboard events for controlling bird
 window.addEventListener("keydown", function (e) {
-  if (e.code === "ArrowUp" || e.code === "Space") {
-    jump();  // Bird starts moving up
-  } else if (e.code === "ArrowDown") {
-    moveDown();  // Bird starts moving down
-  }
+  if (e.code === "ArrowUp" || e.code === "Space") jump();
+  else if (e.code === "ArrowDown") moveDown();
 });
 
 window.addEventListener("keyup", function (e) {
-  if (e.code === "ArrowUp" || e.code === "Space") {
-    stopJump();  // Stop upward movement when key is released
-  } else if (e.code === "ArrowDown") {
-    stopMoveDown();  // Stop downward movement when key is released
-  }
+  if (e.code === "ArrowUp" || e.code === "Space") stopJump();
+  else if (e.code === "ArrowDown") stopMoveDown();
 });
